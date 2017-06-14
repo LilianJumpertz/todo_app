@@ -1,11 +1,13 @@
-class CreateToDos < ActiveRecord::Migration[5.1]
+class CreateTodosubs < ActiveRecord::Migration[5.1]
   def change
-    create_table :to_dos do |t|
-      
-      t.string :goal
+    create_table :todosubs do |t|
+
+      add_reference :todos, :todo, index: true
+
       t.string :category
       t.string :type
       t.string :content
+      t.string :importance
       t.date :timeframe
       t.date :startdate
       t.date :enddate

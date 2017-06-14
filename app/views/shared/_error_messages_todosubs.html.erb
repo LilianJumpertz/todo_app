@@ -1,0 +1,12 @@
+<% if @todosub.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(@todosub.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @todosub.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

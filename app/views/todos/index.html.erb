@@ -1,0 +1,20 @@
+<h1>Todo lists</h1>
+
+    <% @todos.each do |todo| %>
+        <table class="todos" style="width:50%">
+            <th colspan="3"><%= link_to todo.title, todo %>
+            <% todo.todosubs.each do |todosub| %>
+                <tr>
+                    <td style="width:70%"><%= todosub.title %></td>
+                    <td style="width:15%"><%= link_to "edit", edit_todosub_url(todosub.id) %></td>
+                    <td style="width:15%"><%= link_to "delete", todosub, method: :delete,
+                                  data: { confirm: "You sure?" } %></td>
+                </tr>
+            <% end %>
+            </table>
+            <tr><%= link_to "Voer een nieuw item in", new_todosub_path(todo_id: todo.id) %></tr>
+    <% end %>
+
+<div>
+  <%= link_to "Voer een nieuwe Todo list in", new_todo_url, class: "btn btn-lg btn-primary" %>
+</div>

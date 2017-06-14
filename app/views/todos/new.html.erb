@@ -1,0 +1,40 @@
+<h1>Nieuwe Todo lijst</h1>
+<p>Voeg hier een nieuwe Todo lijst toe</p>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@todo) do |f| %>
+			<%= render 'shared/error_messages_todos' %>
+
+        <%= f.label :title, "Title Todo list" %>
+        <%= f.text_field :title, class: 'form-control' %>
+
+        <%= f.label :content, "Korte uitleg" %>
+      	<%= f.text_field :content, class: 'form-control' %>
+
+				<%= f.label :category, "Categorie" %>
+      	<%= f.select(:category, ["", "Administratie", "Creatief", "Huishouden", "Sociaal", "Werk", "Vakantie"]) %>
+
+      	<%= f.label :kind, "Type" %>
+      	<%= f.select(:kind, ["", "Doel", "Reminder", "Todo"]) %>
+
+      	<%= f.label :importance, "Prioriteit" %>
+      	<%= f.select(:importance, ["", "Urgent", "High", "Medium", "Low", "Optional"]) %>
+
+     		<%= f.label :startdate, "Startdatum" %>
+      	<%= f.date_select :startdate, start_year: Date.today.year-5, end_year: Date.today.year+2, class: 'form-control' %>
+
+        <%= f.label :enddate, "Einddatum" %>
+      	<%= f.date_select :enddate, start_year: Date.today.year-5, end_year: Date.today.year+10, class: 'form-control' %>
+
+        <%= f.label :timeframe, "Tijdsduur" %>
+      	<%= f.text_field :timeframe, class: 'form-control' %> 
+
+        <%= f.label :timeframe_unit, "Eenheid" %>
+      	<%= f.select(:timeframe_unit, ["", "Minutes", "Days", "Weeks", "Months", "Years"]) %>
+
+      <%= f.submit "Opslaan", class: "btn btn-primary" %>
+    <% end %>
+
+  </div>
+</div>

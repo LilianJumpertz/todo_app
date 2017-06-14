@@ -1,0 +1,34 @@
+<h1>Todo list '<%= @todo.title %>'</h1>
+
+<table class="todo" style="width:50%">
+  <tr><th><%= @todo.title %></th></tr>
+  <tr><td><%= @todo.content %></td></tr>
+  <tr><td><%= @todo.category %></td></tr>
+  <tr><td><%= @todo.kind %></td></tr>
+  <tr><td><%= @todo.importance %></td></tr>
+  <tr><td><%= @todo.startdate %></td></tr>
+  <tr><td><%= @todo.enddate %></td></tr>
+  <tr><td><%= @todo.timeframe %> <%= @todo.timeframe_unit %></td></tr>
+  </table>
+
+<table class="todosub" style="width:50%">
+<% @todosubs.each do |todosub| %>
+    <tr><th colspan="7"><%= todosub.title %></th></tr>
+    <tr>
+      <td><%= todosub.content %></td>
+      <td><%= todosub.category %></td>
+      <td><%= todosub.kind %></td>
+      <td><%= todosub.importance %></td>
+      <td><%= todosub.startdate %></td>
+      <td><%= todosub.enddate %></td>
+      <td><%= todosub.timeframe %> <%= todosub.timeframe_unit %></td>
+    </tr>
+  <% end %>
+  </table>
+
+
+<div>
+  <%= link_to "Wijzig deze Todo list", edit_todo_url, class: "btn btn-lg btn-primary" %>
+  <%= link_to "Voer een nieuwe Todo list in", new_todo_url, class: "btn btn-lg btn-primary" %>
+  <%= link_to "Voeg een Todo Item toe", new_todosub_path(todo_id: @todo.id), class: "btn btn-lg btn-primary" %>
+</div>

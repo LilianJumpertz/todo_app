@@ -10,34 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170613182417) do
+ActiveRecord::Schema.define(version: 20170614135215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "to_do_subs", force: :cascade do |t|
+  create_table "todos", force: :cascade do |t|
     t.string "category"
     t.string "content"
+    t.string "importance"
     t.date "startdate"
     t.date "enddate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "kind"
     t.decimal "timeframe"
+    t.string "title"
+    t.string "timeframe_unit"
   end
 
-  create_table "to_dos", force: :cascade do |t|
-    t.string "goal"
+  create_table "todosubs", force: :cascade do |t|
     t.string "category"
     t.string "content"
+    t.string "importance"
     t.date "startdate"
     t.date "enddate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "to_do_id"
     t.string "kind"
     t.decimal "timeframe"
-    t.index ["to_do_id"], name: "index_to_dos_on_to_do_id"
+    t.string "title"
+    t.string "timeframe_unit"
+    t.bigint "todo_id"
+    t.index ["todo_id"], name: "index_todosubs_on_todo_id"
   end
 
+  add_foreign_key "todosubs", "todos"
 end
